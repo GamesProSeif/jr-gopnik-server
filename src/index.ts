@@ -1,6 +1,6 @@
 require('dotenv').config();
-const mongoose = require('mongoose');
-const { join } = require('path');
+import * as mongoose from 'mongoose';
+import './server/server';
 
 process.on('unhandledRejection', error => {
   console.error('Unhandled promise rejection:', error);
@@ -13,7 +13,6 @@ const db = mongoose.connection;
 
 db.once('open', () => {
   console.log('Connected to MongoDB');
-  require(join(__dirname, 'server', 'server.js'));
 });
 
 db.on('error', console.error);

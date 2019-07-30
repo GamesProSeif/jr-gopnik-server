@@ -1,4 +1,4 @@
-const allowedSettings = [
+const allowedSettings: Array<string> = [
   'prefix',
   'user_role',
   'bot_role',
@@ -7,13 +7,25 @@ const allowedSettings = [
   'member_logging'
 ];
 
-const validateID = id => {
-  const reg = /^[0-9]{17,19}$/;
+interface AllowedSettings {
+  prefix: string;
+  user_role: string;
+  bot_role: string;
+  auto_assign_roles: boolean;
+  member_logs_channel: string;
+  member_logging: boolean;
+}
+
+export function validateID(id: string) {
+  const reg: RegExp = /^[0-9]{17,19}$/;
 
   return reg.test(id);
-};
+}
 
-const parseSettings = (guildSettings, settingsObj) => {
+export function parseSettings(
+  guildSettings: Map<string, any>,
+  settingsObj: AllowedSettings
+) {
   for (const [key, value] of Object.entries(settingsObj)) {
     if (!allowedSettings.includes(key)) {
       return { error: `${key} is not a valid settings key` };
@@ -37,6 +49,4 @@ const parseSettings = (guildSettings, settingsObj) => {
   }
 
   return { parsed: guildSettings };
-};
-
-module.exports = { validateID, parseSettings };
+}
