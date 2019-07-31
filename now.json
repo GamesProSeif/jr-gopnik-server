@@ -1,0 +1,17 @@
+{
+  "name": "jr-gopnik",
+  "version": 2,
+  "env": {
+    "DB_URI": "@db_uri",
+    "GOPNIK_DISCORD_TOKEN": "@gopnik_discord_token",
+    "TEST_API_KEY": "@test_api_key"
+  },
+  "builds": [
+    { "src": "dist/index.js", "use": "@now/node-server" },
+    { "src": "dist/server/public/*", "use": "@now/static" },
+    { "src": "dist/server/routes/*.js", "use": "@now/node" },
+    { "src": "dist/helpers/*.js", "use": "@now/node" },
+    { "src": "dist/models/*.js", "use": "@now/node" }
+  ],
+  "routes": [{ "src": "/(.*)", "dest": "/dist/index.js" }]
+}
