@@ -8,6 +8,9 @@
     "dev": "nodemon dist/index.js",
     "build": "tsc"
   },
+  "engines": {
+    "node": "11.13.0"
+  },
   "keywords": [],
   "author": "GamesProSeif",
   "license": "MIT",
