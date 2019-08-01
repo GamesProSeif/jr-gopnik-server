@@ -1,14 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
-const myMap = new Map();
-myMap.set('prefix', '/');
-myMap.set('user_role', null);
-myMap.set('bot_role', null);
-myMap.set('auto_assign_roles', false);
-myMap.set('member_logs_channel', null);
-myMap.set('member_logging', false);
-exports.defaultSettings = myMap;
+exports.defaultSettings = {
+    prefix: '/',
+    user_role: null,
+    bot_role: null,
+    auto_assign_roles: false,
+    member_logs_channel: null,
+    member_logging: false,
+    disabled: []
+};
 const GuildSchema = new mongoose_1.Schema({
     guild_id: {
         type: String,

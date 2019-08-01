@@ -1,21 +1,29 @@
 import { Schema, model, Document } from 'mongoose';
 
-export interface IGuild extends Document {
-  guild_id: string;
-  settings: Map<string, any>;
-  member_add_text: Array<string>;
-  member_leave_text: Array<string>;
+export interface ISettings extends Object {
+  prefix: string;
+  user_role: string;
+  bot_role: string;
+  auto_assign_roles: boolean;
+  member_logs_channel: string;
+  member_logging: boolean;
+  disabled: Array<string>;
 }
 
-const myMap: Map<string, any> = new Map();
-myMap.set('prefix', '/');
-myMap.set('user_role', null);
-myMap.set('bot_role', null);
-myMap.set('auto_assign_roles', false);
-myMap.set('member_logs_channel', null);
-myMap.set('member_logging', false);
+export interface IGuild extends Document {
+  guild_id: string;
+  settings: ISettings;
+}
 
-export const defaultSettings = myMap;
+export const defaultSettings: ISettings = {
+  prefix: '/',
+  user_role: null,
+  bot_role: null,
+  auto_assign_roles: false,
+  member_logs_channel: null,
+  member_logging: false,
+  disabled: []
+};
 
 const GuildSchema = new Schema({
   guild_id: {

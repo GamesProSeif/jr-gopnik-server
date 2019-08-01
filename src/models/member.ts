@@ -1,6 +1,6 @@
 import { Schema, model, Document } from 'mongoose';
 
-interface IMember extends Document {
+export interface IMember extends Document {
   user: string;
   guild: string;
   roles: Array<string>;
