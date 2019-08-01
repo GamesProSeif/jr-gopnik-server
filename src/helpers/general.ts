@@ -1,10 +1,13 @@
+import { ISettings } from '../models/guild';
+
 const allowedSettings: Array<string> = [
   'prefix',
   'user_role',
   'bot_role',
   'auto_assign_roles',
   'member_logs_channel',
-  'member_logging'
+  'member_logging',
+  'disabled'
 ];
 
 interface AllowedSettings {
@@ -14,6 +17,7 @@ interface AllowedSettings {
   auto_assign_roles: boolean;
   member_logs_channel: string;
   member_logging: boolean;
+  disabled: string[];
 }
 
 export function validateID(id: string) {
@@ -23,7 +27,7 @@ export function validateID(id: string) {
 }
 
 export function parseSettings(
-  guildSettings: Map<string, any>,
+  guildSettings: ISettings,
   settingsObj: AllowedSettings
 ) {
   for (const [key, value] of Object.entries(settingsObj)) {
@@ -45,7 +49,7 @@ export function parseSettings(
       return { error: `Invalid value for ${key}. Expected Boolean` };
     }
 
-    guildSettings.set(key, value);
+    guildSettings[key] = value;
   }
 
   return { parsed: guildSettings };

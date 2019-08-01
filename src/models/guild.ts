@@ -32,7 +32,7 @@ const GuildSchema = new Schema({
     unique: true
   },
   settings: {
-    type: Map,
+    type: Object,
     default: defaultSettings,
     prefix: {
       type: String,

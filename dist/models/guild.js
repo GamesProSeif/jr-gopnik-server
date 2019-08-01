@@ -17,7 +17,7 @@ const GuildSchema = new mongoose_1.Schema({
         unique: true
     },
     settings: {
-        type: Map,
+        type: Object,
         default: exports.defaultSettings,
         prefix: {
             type: String,

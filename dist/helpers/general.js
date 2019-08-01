@@ -6,7 +6,8 @@ const allowedSettings = [
     'bot_role',
     'auto_assign_roles',
     'member_logs_channel',
-    'member_logging'
+    'member_logging',
+    'disabled'
 ];
 function validateID(id) {
     const reg = /^[0-9]{17,19}$/;
@@ -26,7 +27,7 @@ function parseSettings(guildSettings, settingsObj) {
             typeof value !== 'boolean') {
             return { error: `Invalid value for ${key}. Expected Boolean` };
         }
-        guildSettings.set(key, value);
+        guildSettings[key] = value;
     }
     return { parsed: guildSettings };
 }
