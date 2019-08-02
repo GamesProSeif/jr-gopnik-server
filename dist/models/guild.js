@@ -27,7 +27,8 @@ const GuildSchema = new mongoose_1.Schema({
         bot_role: String,
         auto_assign_roles: Boolean,
         member_logs_channel: String,
-        member_logging: Boolean
+        member_logging: Boolean,
+        disabled: Array
     },
     member_add_text: {
         type: Array,

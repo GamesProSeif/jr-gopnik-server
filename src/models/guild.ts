@@ -1,4 +1,5 @@
 import { Schema, model, Document } from 'mongoose';
+import { IDisabled } from '../helpers/general';
 
 export interface ISettings extends Object {
   prefix: string;
@@ -7,7 +8,7 @@ export interface ISettings extends Object {
   auto_assign_roles: boolean;
   member_logs_channel: string;
   member_logging: boolean;
-  disabled: Array<string>;
+  disabled: IDisabled[];
 }
 
 export interface IGuild extends Document {
@@ -42,7 +43,8 @@ const GuildSchema = new Schema({
     bot_role: String,
     auto_assign_roles: Boolean,
     member_logs_channel: String,
-    member_logging: Boolean
+    member_logging: Boolean,
+    disabled: Array
   },
   member_add_text: {
     type: Array,

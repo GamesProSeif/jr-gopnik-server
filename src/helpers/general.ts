@@ -22,7 +22,7 @@ export interface IAllowedSettings {
   auto_assign_roles: boolean;
   member_logs_channel: string;
   member_logging: boolean;
-  disabled: IDisabled;
+  disabled: IDisabled[];
 }
 
 export function validateID(id: string) {
