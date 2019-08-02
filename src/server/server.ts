@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as favicon from 'serve-favicon';
 import * as path from 'path';
+
 const app: express.Application = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
@@ -18,7 +19,15 @@ app.use(
 );
 
 app.get('/', (req: express.Request, res: express.Response) => {
-  res.send('Welcome to the server');
+  res.render('index', { title: 'Home' });
+});
+
+app.get('/home', (req: express.Request, res: express.Response) => {
+  res.redirect('/');
+});
+
+app.get('/about', (req: express.Request, res: express.Response) => {
+  res.render('about', { title: 'About' });
 });
 
 app.use('/api/', require(path.join(__dirname, 'routes', 'api')));

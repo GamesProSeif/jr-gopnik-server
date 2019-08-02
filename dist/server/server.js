@@ -15,7 +15,13 @@ app.use(express.urlencoded({
     extended: false
 }));
 app.get('/', (req, res) => {
-    res.send('Welcome to the server');
+    res.render('index', { title: 'Home' });
+});
+app.get('/home', (req, res) => {
+    res.redirect('/');
+});
+app.get('/about', (req, res) => {
+    res.render('about', { title: 'About' });
 });
 app.use('/api/', require(path.join(__dirname, 'routes', 'api')));
 app.use('/util/', require(path.join(__dirname, 'routes', 'util')));
