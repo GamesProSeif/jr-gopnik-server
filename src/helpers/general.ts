@@ -10,14 +10,19 @@ const allowedSettings: Array<string> = [
   'disabled'
 ];
 
-interface AllowedSettings {
+export interface IDisabled {
+  command: string;
+  channels: string[];
+}
+
+export interface IAllowedSettings {
   prefix: string;
   user_role: string;
   bot_role: string;
   auto_assign_roles: boolean;
   member_logs_channel: string;
   member_logging: boolean;
-  disabled: string[];
+  disabled: IDisabled;
 }
 
 export function validateID(id: string) {
@@ -28,7 +33,7 @@ export function validateID(id: string) {
 
 export function parseSettings(
   guildSettings: ISettings,
-  settingsObj: AllowedSettings
+  settingsObj: IAllowedSettings
 ) {
   for (const [key, value] of Object.entries(settingsObj)) {
     if (!allowedSettings.includes(key)) {
