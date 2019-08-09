@@ -1,5 +1,5 @@
-import Guild, { defaultSettings } from './../models/guild';
-import { IGuild } from './../models/guild';
+import Guild from './../models/guild';
+import { IGuild } from '../typings/interfaces';
 
 const listGuilds: any = () => {
   return new Promise((res: any, rej: any) => {

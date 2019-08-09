@@ -7,7 +7,7 @@ import {
   addGuild,
   deleteGuild
 } from './../../helpers/guild';
-import { IGuild } from '../../models/guild';
+import { IGuild } from '../../typings/interfaces';
 
 const router: Router = Router();
 const discordAPI = 'https://discordapp.com/api';

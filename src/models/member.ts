@@ -1,12 +1,5 @@
-import { Schema, model, Document } from 'mongoose';
-
-export interface IMember extends Document {
-  user: string;
-  guild: string;
-  roles: Array<string>;
-  xp: number;
-  presence: string;
-}
+import { Schema, model } from 'mongoose';
+import { IMember } from '../typings/interfaces';
 
 const MemberSchema = new Schema({
   user: String,

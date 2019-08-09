@@ -1,20 +1,5 @@
-import { Schema, model, Document } from 'mongoose';
-import { IDisabled } from '../helpers/general';
-
-export interface ISettings extends Object {
-  prefix: string;
-  user_role: string;
-  bot_role: string;
-  auto_assign_roles: boolean;
-  member_logs_channel: string;
-  member_logging: boolean;
-  disabled: IDisabled[];
-}
-
-export interface IGuild extends Document {
-  guild_id: string;
-  settings: ISettings;
-}
+import { Schema, model } from 'mongoose';
+import { ISettings, IGuild } from '../typings/interfaces';
 
 export const defaultSettings: ISettings = {
   prefix: '/',
